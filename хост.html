@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила сервера Гематогенки</title>
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-h: #102a43;
+            --text-p: #486581;
+            --btn-secondary: #5a67d8;
+            --accent-circle: #63b3ed;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-h: #f1f5f9;
+            --text-p: #94a3b8;
+            --btn-secondary: #7f9cf5;
+            --accent-circle: #1e3a8a;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            transition: background-color 0.5s ease;
+        }
+
+        .bg-sphere {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: var(--accent-circle);
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .glass-panel {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 50px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            animation: appear 0.6s ease-out;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* КОНТЕЙНЕР ДЛЯ КНОПОК */
+        .controls {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* СТИЛЬ ТЕКСТОВОЙ КНОПКИ СБОРКА */
+        .text-btn {
+            text-decoration: none;
+            color: var(--text-h);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .text-btn:hover { background: white; color: black; transform: translateY(-2px); }
+
+        /* КНОПКА ТЕМЫ (КРУГЛАЯ) */
+        .theme-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-h);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+        .theme-btn:hover { transform: translateY(-2px); background: white; }
+
+        h1 { color: var(--text-h); font-size: 28px; margin: 0 0 30px 0; text-align: center; font-weight: 800; }
+        
+        .rules-content {
+            color: var(--text-p);
+            line-height: 1.8;
+            font-size: 16px;
+            white-space: pre-line;
+            background: rgba(0,0,0,0.02);
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .highlight {
+            color: var(--btn-secondary);
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .glass-panel { padding: 30px 15px; }
+            .controls { position: relative; top: 0; right: 0; margin-bottom: 25px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-sphere" style="top: -10%; right: -10%;"></div>
+    <div class="bg-sphere" style="bottom: -10%; left: -10%;"></div>
+
+    <div class="glass-panel">
+        <div class="controls">
+            <!-- ТЕКСТОВАЯ КНОПКА СБОРКА -->
+            <a href="https://gem-ky.netlify.app" class="text-btn">сборка</a>
+            <!-- КНОПКА СМЕНЫ ТЕМЫ -->
+            <button class="theme-btn" id="theme-btn">🌙</button>
+        </div>
+
+        <h1>Правила сервера</h1>
+
+        <div class="rules-content">
+<span class="highlight">Правила для ВСЕХ, кроме администраторов</span>
+Все наказания выносят администраторы.
+
+Администрация проекта (Bibliotekar_B, некий неизвестный в маске) имеет большую силу, чем правила. Администрация проекта оставляет за собой право не разъяснять свои действия игрокам. Администрация проекта не понимает шутки рофлы, приколы, баги, фейлы, ловушки (только если администрация не в хорошем настроении)
+
+Сервер Гематогенки является зоной, свободной от политики (ИРЛ).
+
+Запрещена передача аккаунта/мультиаккаунт в любом проявлении. Все действия, совершенные с вашего аккаунта по умолчанию считаются совершенные вами, ответственность за это тоже несете вы.
+
+Запрещено распространение вирусов/вредоносных программ/стилеров и прочего ПО/любых вредоносных/нежелательных ссылок и тд.
+
+Запрещены любого рода оскорбления которые напрямую или косвенно относятся к Гематогенкам - насмешки, издевки, провокации, токсицизм, расизм, национализм, оскорбления по расовому/национальному признаку, шовинизм и другие выпады с негативными намерениями, призывы к вышеперечисленным деяниям.
+
+Запрещены нападения на других игроков без причины/предупреждения (в т.ч. “ПвП забивы”, “РП с кристаллами”), а так же в зонах без ПВП, которые определены РП законодательством.
+
+Запрещены любого рода читы/программы/ресурспаки/глитчи и другие средства, которые вам дают или могут дать игровое преимущество.
+
+<span class="highlight">Известные вирусы - Prism Launcher, PolyMC (запрещены)</span>
+Запрещена постройка “лаг-машин” или любых других механизмов, любых других действий, которые вредят/могут навредить серверу и/или игрокам и/или сезону.
+
+Также запрещается создание переполненных ферм, любых иных скоплений энтити, приводящих к снижению клиентской производительности (FPS) или существенному падению TPS в регионе.
+
+Запрещено выдавать себя за модератора/администратора/забаненного игрока или любого другого игрока без письменного согласия с отметкой времени.
+
+Запрещена порча окружающего мира, на не принадлежащей вам территории, а так же на нейтральной территории. (В том числе: строительство бессмысленных столбов, блоков и грязевых линий/мостов для своего передвижения, недорубка деревьев, создание кратеров при помощи криперов, уродование структурных генераций и т.д).
+        </div>
+    </div>
+
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.textContent = '☀️';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+
+</body>
+</html>
