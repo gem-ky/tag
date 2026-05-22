@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гематогенки GET STARTED</title>
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-h: #102a43;
+            --text-p: #486581;
+            --btn-primary: #2b6cb0;
+            --btn-secondary: #5a67d8;
+            --accent-circle: #63b3ed;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-h: #f1f5f9;
+            --text-p: #94a3b8;
+            --btn-primary: #3182ce;
+            --btn-secondary: #7f9cf5;
+            --accent-circle: #1e3a8a;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        .bg-sphere {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: var(--accent-circle);
+            filter: blur(100px);
+            opacity: 0.25;
+            z-index: -1;
+            animation: pulseBg 8s infinite alternate;
+        }
+        @keyframes pulseBg {
+            from { transform: scale(1); opacity: 0.2; }
+            to { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        .glass-panel {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 35px;
+            padding: 60px 50px;
+            text-align: center;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            animation: appear 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-h);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .theme-toggle:hover { transform: rotate(15deg); }
+
+        h1 { color: var(--text-h); font-size: 32px; margin: 0 0 15px 0; letter-spacing: -1px; font-weight: 800; }
+        p { color: var(--text-p); font-size: 17px; margin-bottom: 40px; line-height: 1.6; }
+        code { font-family: 'Consolas', monospace; background: rgba(0,0,0,0.06); padding: 3px 8px; border-radius: 6px; font-weight: 600; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 18px; }
+
+        /* БАЗОВЫЕ СТИЛИ КНОПОК */
+        .btn {
+            position: relative;
+            padding: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            overflow: hidden; /* Важно для эффекта блеска */
+        }
+
+        /* ЭФФЕКТ БЛЕСКА (SHINE) */
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            transition: none;
+            animation: shine 4s infinite;
+        }
+        @keyframes shine {
+            0% { left: -60%; }
+            15% { left: 120%; }
+            100% { left: 120%; }
+        }
+
+        /* КНОПКА СКАЧАТЬ С ПУЛЬСАЦИЕЙ */
+        .download-btn {
+            background: var(--btn-primary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(43, 108, 176, 0.4);
+            animation: buttonPulse 2s infinite;
+        }
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(43, 108, 176, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(43, 108, 176, 0); }
+        }
+
+        /* КНОПКА ПРАВИЛ */
+        .rules-btn {
+            background: var(--btn-secondary);
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(90, 103, 216, 0.4);
+        }
+
+        /* ХОВЕР ЭФФЕКТЫ */
+        .btn:hover {
+            transform: translateY(-5px) rotate(1deg);
+            filter: brightness(1.15);
+        }
+
+        .btn:active { transform: translateY(-1px) scale(0.97); }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-sphere" style="top: -10%; left: -10%;"></div>
+    <div class="bg-sphere" style="bottom: -10%; right: -10%;"></div>
+
+    <div class="glass-panel">
+        <button class="theme-toggle" id="theme-btn">🌙</button>
+
+        <h1>Гематогенки GET STARTED</h1>
+        <p>Версия <code>1.21.1 NeoForge</code><br>IP: <code>gematogenky.minerent.io</code></p>
+ <p>Если возникнут вопросы обращайтесь в тех. поддержку на сайте справа снизу</code></p>
+        
+        <div class="btn-group">
+            <a href="https://www.dropbox.com/scl/fi/y4gbqz6emfhsboazswh12/.zip?rlkey=zgquc5sbl45e4rgzc3lsuc7of&st=9mfwdji8&dl=1" class="btn download-btn">
+                <span>⬇</span> Скачать сборку
+            </a>
+            <a href="https://gem-ky-rulees.netlify.app" target="_blank" class="btn rules-btn">
+                📋 Правила сервера
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const themeBtn = document.getElementById('theme-btn');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+            themeBtn.textContent = '☀️';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                themeBtn.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeBtn.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+
+</body>
+</html>
